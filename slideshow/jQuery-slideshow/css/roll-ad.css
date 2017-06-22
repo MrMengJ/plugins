@@ -39,22 +39,91 @@ body{color:#666; background-color:#fff;font: 12px/1.5,tahoma,arial,'Hiragino San
     top: 10px;
     left: 140px;
 }
+.rollad .roll-list .roll-item::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    background: rgba(0, 0, 0, .5);
+}
+.rollad .roll-list .roll-item.active::before{
+    width: 0;
+    height: 0;
+}
+
 .rollad .roll-btn{
     width: 100%;
-    height: 70px;
+    height: 220px;
     position: absolute;
-    top: 80px;
-    z-index: 22;
+    left: 0;
+    top: 10px;
+    z-index: 25;
     display: none;
 }
-.rollad .roll-btn img{
-    width: 30px;
-    height: 68px;
-    display: block;
+.rollad .roll-btn .roll-prev-btn,
+.rollad .roll-btn .roll-next-btn{
+    width: 130px;
+    height: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
 }
 .rollad .roll-btn .roll-prev-btn{
   float: left;
 }
 .rollad .roll-btn .roll-next-btn{
     float: right;
+}
+.rollad .roll-btn img{
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+.rollad .roll-btn .roll-prev-img,
+.rollad .roll-btn .roll-next-img{
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.rollad .roll-btn .roll-prev-img{
+    left: 0;
+}
+.rollad .roll-btn .roll-next-img{
+    right: 0;
+}
+
+.rollad .switchover{
+    margin: 15px;
+    line-height: 30px;
+}
+.rollad .switchover .switchover-btn{
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    bottom: -15px;
+    -moz-transform:translateX(-50%);
+    -webkit-transform:translateX(-50%);
+    -ms-transform:translateX(-50%);
+    -o-transform:translateX(-50%);
+    transform:translateX(-50%);
+}
+.rollad .switchover .switchover-btn .switchover-item{
+    float: left;
+    width: 25px;
+    height: 5px;
+    margin: 0 15px 0 0;
+    background: #bebfbc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.rollad .switchover .switchover-btn .switchover-item.active{
+    background:#f23030;
 }
