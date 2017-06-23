@@ -16,21 +16,13 @@ body{color:#666; background-color:#fff;font: 12px/1.5,tahoma,arial,'Hiragino San
 .rollad{
     width: 800px;
     height: 250px;
-    margin: 50px auto;
+    margin: 0 auto;
     position: relative;
 }
 .rollad .roll-list{
     width: 800px;
-    height: 250px;
+    height: auto;
 }
-/*.rollad .roll-list .roll-shade{
-   width: 800px;
-   height: 220px;
-   position: absolute;
-   top: 10px;
-   background: rgb(0,0,0.8);
-   z-index: 25;
-}*/
 
 .rollad .roll-list .roll-item{
     width: 520px;
@@ -98,15 +90,12 @@ body{color:#666; background-color:#fff;font: 12px/1.5,tahoma,arial,'Hiragino San
     right: 0;
 }
 
-.rollad .switchover{
-    margin: 15px;
-    line-height: 30px;
-}
+.rollad .switchover{}
 .rollad .switchover .switchover-btn{
     display: inline-block;
     position: absolute;
     left: 50%;
-    bottom: -15px;
+    bottom: 0px;
     -moz-transform:translateX(-50%);
     -webkit-transform:translateX(-50%);
     -ms-transform:translateX(-50%);
