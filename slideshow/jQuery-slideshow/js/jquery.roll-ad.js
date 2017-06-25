@@ -312,7 +312,6 @@
             new RollAd($(this));
         });
     };
-
     window['RollAd'] = RollAd;
 
 })(jQuery);
