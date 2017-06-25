@@ -1,4 +1,4 @@
-# slideshow/jQuery-slideshow
+# slideshow/jQuery-slideshow（jquery插件）
 ## 广告轮番图
 
 
