@@ -79,8 +79,6 @@
             self.autoRoll();
             self.rollBtn.fadeOut(600);
         });
-
-
     };
     /*构造函数Rollad的prototype属性*/
     RollAd.prototype = {
@@ -166,21 +164,21 @@
             var prevEle = nowEle.prev().get(0) ? nowEle.prev() : this.lastRollItem;
             if (type == 'next') {
                 var nextEleTwo = nextEle.next().get(0) ? nextEle.next() : this.firstRollItem;
-                nextEleTwo.animate(this.getEleCss(nextEle), delay, function () {
+                nextEleTwo.stop(true,false).animate(this.getEleCss(nextEle), delay, function () {
                     
                 });
-                nextEle.animate(this.getEleZIndex(nowEle), 0);
-                nextEle.animate(this.getEleCss(nowEle), delay, function () {
+                nextEle.stop(true,false).animate(this.getEleZIndex(nowEle), 0);
+                nextEle.stop(true,false).animate(this.getEleCss(nowEle), delay, function () {
                 
                 }).attr('nowflag', ++this.nowflag);
                 setTimeout(function () {
                     nextEle.addClass('active').siblings().removeClass('active');
                 }, 100);
-                nowEle.animate(this.getEleCss(prevEle), delay, function () {
+                nowEle.stop(true,false).animate(this.getEleCss(prevEle), delay, function () {
                    
                 });
 
-                prevEle.animate({
+                prevEle.stop(true,false).animate({
                     "width": liWidth,
                     "height": liHeight,
                     "zIndex": 0,
@@ -193,21 +191,21 @@
 
             if (type == 'prev') {
                 var prevEleTwo = prevEle.prev().get(0) ? prevEle.prev() : this.lastRollItem;
-                prevEleTwo.animate(this.getEleCss(prevEle), delay, function () {
+                prevEleTwo.stop(true,false).animate(this.getEleCss(prevEle), delay, function () {
                     
                 });
-                prevEle.animate(this.getEleZIndex(nowEle), 0);
-                prevEle.animate(this.getEleCss(nowEle), delay, function () {
+                prevEle.stop(true,false).animate(this.getEleZIndex(nowEle), 0);
+                prevEle.stop(true,false).animate(this.getEleCss(nowEle), delay, function () {
                     
                 }).attr('nowflag', --this.nowflag);
                 setTimeout(function () {
                     prevEle.addClass('active').siblings().removeClass('active');
                 }, 100);
-                nowEle.animate(this.getEleCss(nextEle), delay, function () {
+                nowEle.stop(true,false).animate(this.getEleCss(nextEle), delay, function () {
                     
                 });
 
-                nextEle.animate({
+                nextEle.stop(true,false).animate({
                     "width": liWidth,
                     "height": liHeight,
                     "zIndex": 0,
@@ -228,20 +226,47 @@
             var top = this.setting.top;
             var plusWidth = this.setting.plusWidth;
             var delay = this.setting.delay;
+            var oldSecondEle = this.rollItems.eq(this.oldIndex);
+            var oldFirstEle = oldSecondEle.prev().get(0) ?  oldSecondEle.prev() : this.lastRollItem;
+            var oldLastEle = oldSecondEle.next().get(0) ? oldSecondEle.next() : this.firstRollItem;
             var nowEle = this.rollItems.eq(this.nowIndex);
             var prevEle = nowEle.prev().get(0) ? nowEle.prev() : this.lastRollItem;
             var nextEle = nowEle.next().get(0) ? nowEle.next() : this.firstRollItem;
-            this.rollItems.animate({
+            // console.log("oldFirstEle:"+oldFirstEle.index());
+            // console.log("oldSecondEle:"+oldSecondEle.index());
+            // console.log("oldLastEle:"+oldLastEle.index());
+            oldFirstEle.stop(true,false).animate({
                 "width": liWidth,
                 "height": liHeight,
                 "zIndex": 0,
                 "left": (rollWidth - liWidth) / 2,
                 "top": top
             }, 0);
-            nowEle.animate({
+            oldSecondEle.stop(true,false).animate({
+                "width": liWidth,
+                "height": liHeight,
+                "zIndex": 0,
+                "left": (rollWidth - liWidth) / 2,
+                "top": top
+            }, 0);
+            oldLastEle.stop(true,false).animate({
+                "width": liWidth,
+                "height": liHeight,
+                "zIndex": 0,
+                "left": (rollWidth - liWidth) / 2,
+                "top": top
+            }, 0);
+            // this.rollItems.animate({
+            //     "width": liWidth,
+            //     "height": liHeight,
+            //     "zIndex": 0,
+            //     "left": (rollWidth - liWidth) / 2,
+            //     "top": top
+            // }, 0);
+            nowEle.stop(true,true).animate({
                 "zIndex": 34
             }, 0);
-            nowEle.animate({
+            nowEle.stop(true,true).animate({
                 "width": liWidth + plusWidth,
                 "height": liHeight + top,
                 "zIndex": 33,
@@ -252,8 +277,8 @@
             }).attr("nowflag", nowIndex).siblings().removeAttr("nowflag");
             setTimeout(function () {
                 nowEle.addClass('active').siblings().removeClass('active');
-            });
-            prevEle.animate({
+            },100);
+            prevEle.stop(true,true).animate({
                 "width": liWidth,
                 "height": liHeight,
                 "zIndex": 22,
@@ -263,7 +288,7 @@
                 
             });
 
-            nextEle.animate({
+            nextEle.stop(true,true).animate({
                 "width": liWidth,
                 "height": liHeight,
                 "zIndex": 22,
